@@ -1,6 +1,9 @@
-# Pull base image 
-From tomcat:8-jre8 
+From centos
+RUN yum  install -y httpd
+RUN yum clean all
+RUN yum install -y net-tools
+COPY /home/pratik/index.html /var/www/html
+EXPOSE 80
+CMD ["-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd"]
 
-# Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
