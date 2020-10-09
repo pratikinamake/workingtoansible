@@ -1,6 +1,7 @@
-# Pull base image 
-From tomcat:8-jre8 
+From centos
+RUN yum  install -y httpd
+RUN yum clean all
+RUN yum install -y net-tools
+COPY run.sh run.sh
+CMD ./run.sh
 
-# Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
